@@ -17,10 +17,6 @@ public class UserServiceImpl implements UserService {
 
    @Override
    public void getById(int id) {
-      /*List<User> users = userDao.getUsers();
-      for (User user : users) {
-         if (user.getId() == id) {
-            System.out.println(user);*/
       User user1 = userDao.getUsers()
               .stream()
               .filter(user -> user.getId() == id)

@@ -13,15 +13,19 @@ public class Main {
 
         try {
             UserService userService = new UserServiceImpl();
-            System.out.println("Get by id: ");
             userService.addNewUser(user1);
             userService.addNewUser(user2);
             userService.addNewUser(user3);
-            userService.getById(3);
+
+            System.out.println("Get by id: ");
+            userService.getById(1);
+
             System.out.println("Get all: ");
             userService.getAll();
-            userService.removeByID(5);
+
+            userService.removeByID(2);
             System.out.println("After deleting by id: ");
+
             userService.getAll();
 
         } catch (RuntimeException e) {
