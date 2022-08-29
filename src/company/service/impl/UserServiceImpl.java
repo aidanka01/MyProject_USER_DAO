@@ -17,25 +17,33 @@ public class UserServiceImpl implements UserService {
 
    @Override
    public void getById(int id) {
-      User user1 = userDao.getUsers()
-              .stream()
-              .filter(user -> user.getId() == id)
-              .findFirst()
-              .orElseThrow(() -> new MyException("Oops...  we don't have such id"));
-      System.out.println(user1);
-
+      try {
+         User user1 = userDao.getUsers()
+                 .stream()
+                 .filter(user -> user.getId() == id)
+                 .findFirst()
+                 .orElseThrow(() -> new MyException("Oops...  we don't have such id"));
+         System.out.println(user1);
+      } catch (MyException e){
+         System.out.println(e.getMessage());
+      }
          }
 
 
 
    @Override
    public void removeByID(int id) {
-      User user1 = userDao.getUsers()
-              .stream()
-              .filter(user -> user.getId() == id)
-              .findFirst()
-              .orElseThrow(() -> new MyException("Oops...we don't have such id"));
-      userDao.getUsers().remove(user1);
+      try {
+         User user1 = userDao.getUsers()
+                 .stream()
+                 .filter(user -> user.getId() == id)
+                 .findFirst()
+                 .orElseThrow(() -> new MyException("Oops...we don't have such id for removing"));
+         userDao.getUsers().remove(user1);
+      } catch (MyException e){
+         System.out.println(e.getMessage());
+      }
+
    }
 
    @Override
